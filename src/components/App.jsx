@@ -30,14 +30,14 @@ class App extends React.Component {
   }
 
   requireAuthAndTime(nextState, replace, next) {
-    const time = new Date().getHours();
+    // const time = new Date().getHours();
     const token = localStorage.getItem('token');
     const id = localStorage.getItem('id');
     if (!token || !id) {
       localStorage.clear();
       replace('sign-in');
-    } else if (time > 16 || time < 9) {
-      replace('afterHours');
+    // } else if (time > 16 || time < 9) {
+    //   replace('afterHours');
     } else {
       next();
     }

@@ -51,7 +51,7 @@ class ClientChatContainer extends Component {
     return (
       <div className="row">
         <p className="text-center">
-          Welcome! You can chat with an attorney below.
+          Welcome! You can chat with an representative below.
         </p>
 
         <div className="col-sm-6 col-sm-offset-3">

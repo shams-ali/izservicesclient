@@ -78,7 +78,7 @@ class Register extends React.Component {
       localStorage.setItem('id', res.data[0].user_id);
       localStorage.setItem('username', res.data[0].username);
 
-      browserHistory.push('/settings');
+      browserHistory.push(`chat/${res.data[0].id}`);
     };
 
     const success = (res) => {

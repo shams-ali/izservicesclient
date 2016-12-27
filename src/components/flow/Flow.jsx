@@ -10,6 +10,7 @@ class Flow extends Component {
       prevQuestion: {},
       error: '',
       success: false,
+      successString: '',
     };
     this.handleYes = this.handleYes.bind(this);
     this.handleNo = this.handleNo.bind(this);
@@ -21,7 +22,7 @@ class Flow extends Component {
     const { question } = this.state.answer;
     const curr = this.state.answer;
     if (question.yes.success) {
-      this.setState({ success: true });
+      this.setState({ successString: question.yes.success, success: true });
     } else if (!question.yes.error) {
       const next = question.yes;
       next.prev = curr;
@@ -29,7 +30,7 @@ class Flow extends Component {
     } else {
       const next = question.yes;
       next.prev = curr;
-      this.setState({ answer: next, error: question.yes.error });
+      this.setState({ answer: next, error: question.yes.error, success: false });
     }
   }
 
@@ -38,13 +39,13 @@ class Flow extends Component {
     const curr = this.state.answer;
     this.setState({ prevQuestion: question });
     if (question.no.success) {
-      this.setState({ success: true });
+      this.setState({ successString: question.no.success, success: true });
     } else if (!question.no.error) {
       const next = question.no;
       next.prev = curr;
       this.setState({ answer: next });
     } else {
-      this.setState({ error: question.no.error });
+      this.setState({ error: question.no.error, success: false });
     }
   }
 
@@ -55,8 +56,7 @@ class Flow extends Component {
   renderChatButton() {
     return (
       <div className="eligible">
-        <p>You're eligible to recieve free advice with an attorney via chat.
-        We just need some basic information first.</p>
+        <p>{this.state.successString}</p>
         <Link to={`/register/${this.props.issue.title.toLowerCase()}`}>
           <button
             className="btn btn-default btn-lg btn-block"

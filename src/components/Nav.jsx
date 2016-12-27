@@ -20,14 +20,11 @@ const Nav = ({ signOut }) => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">LCJC</a>
+          <ul className="navbar-brand"><Link to="/">IzServices</Link></ul>
         </div>
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul className="nav navbar-left">
-            <li><Link to="/">Home</Link></li>
-          </ul>
           {localStorage.getItem('token') ?
-            <ul className="nav navbar-right">
+            <ul className="navbar-right list-inline">
               <li><button type="button" className="btn" onClick={signOut}>Sign Out</button></li>
               <li><Link to={chatLink}>Chat</Link></li>
             </ul>

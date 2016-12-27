@@ -48,7 +48,7 @@ class SignIn extends React.Component {
       if (res.data[0].user_id === 1) {
         browserHistory.push('/admin');
       } else {
-        browserHistory.push('/settings');
+        browserHistory.push('/');
       }
     };
     // TODO: Add AJAX error handling
