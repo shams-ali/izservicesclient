@@ -19,8 +19,8 @@ let rooms = [];
 io.on('connection', socket => {
   socket.on('admin', () => {
     socket.username = 'admin';
-    socket.firstName = 'Attorney';
-    socket.lastName = 'General';
+    socket.firstName = 'Admin';
+    socket.lastName = 'Representative';
     socket.emit('updaterooms', rooms);
   });
 
